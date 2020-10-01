@@ -2,6 +2,8 @@ package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
 
+import static org.junit.Assert.assertTrue;
+
 public class Job {
 
     private int id;
@@ -12,6 +14,12 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private String printableNameValue;
+    private String printableEmployerValue;
+    private String printableLocationValue;
+    private String printablePositionTypeValue;
+    private String printableCoreCompetencyValue;
+
 
     public Job() {
         id = nextId;
@@ -33,6 +41,24 @@ public class Job {
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
         return id == job.id;
+    }
+
+    @Override
+    public String toString() {
+        printableNameValue = this.getName().equals("") ? "Data not available" : this.getName();
+        printableEmployerValue = this.getEmployer().toString().equals("") ? "Data not available" : this.getEmployer().toString();
+        printableLocationValue = this.getLocation().toString().equals("") ? "Data not available": this.getLocation().toString();
+        printablePositionTypeValue = this.getPositionType().toString().equals("") ? "Data not available": this.getPositionType().toString();
+        printableCoreCompetencyValue = this.getCoreCompetency().toString().equals("") ? "Data not available": this.getCoreCompetency().toString();
+
+        return new String ("\n" +
+                "ID: " + this.getId() + "\n" +
+                "Name: " + printableNameValue + "\n" +
+                "Employer: " + printableEmployerValue + "\n" +
+                "Location: " + printableLocationValue + "\n" +
+                "Position Type: " + printablePositionTypeValue + "\n" +
+                "Core Competency: " + printableCoreCompetencyValue + "\n" +
+                "\n");
     }
 
     @Override
